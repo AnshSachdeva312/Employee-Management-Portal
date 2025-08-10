@@ -34,7 +34,7 @@ const EmpMeeting = () => {
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get("http://localhost:3000/api/auth/all", {
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/auth/all`, {
         headers: { authorization: `Bearer ${token}` },
       });
       setUsers(response.data.filter((u) => u._id !== user?._id));
@@ -46,7 +46,7 @@ const EmpMeeting = () => {
   const fetchMeetings = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get("http://localhost:3000/api/meetings", {
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/meetings`, {
         headers: { authorization: `Bearer ${token}` },
       });
       setMeetings(response.data);
@@ -108,8 +108,8 @@ const EmpMeeting = () => {
   
       const token = localStorage.getItem("token");
       const endpoint = editingMeeting
-        ? `http://localhost:3000/api/meetings/${editingMeeting._id}`
-        : "http://localhost:3000/api/meetings";
+        ? `${import.meta.env.VITE_API_BASE_URL}/api/meetings/${editingMeeting._id}`
+        : `${import.meta.env.VITE_API_BASE_URL}/api/meetings`;
   
       const method = editingMeeting ? "put" : "post";
   

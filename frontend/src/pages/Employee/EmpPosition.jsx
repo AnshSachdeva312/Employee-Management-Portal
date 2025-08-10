@@ -27,10 +27,10 @@ export default function EmpPosition() {
         }
 
         const [positionRes, salaryRes] = await Promise.all([
-          axios.get("http://localhost:3000/api/user/position", {
+          axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/user/position`, {
             headers: { authorization: `Bearer ${token}` },
           }),
-          axios.get("http://localhost:3000/api/user/salary", {
+          axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/user/salary`, {
             headers: { authorization: `Bearer ${token}` },
           }),
         ]);

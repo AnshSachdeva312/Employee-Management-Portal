@@ -51,7 +51,6 @@ export default function EmpPanel() {
   const baseOptions = [
     { name: "Announcements", icon: <FaBullhorn />, path: "/announcements" },
     { name: "Position", icon: <FaBriefcase />, path: "/position" },
-    { name: "Attendance", icon: <FaCalendarCheck />, path: "/attendance" },
     { name: "Notice Period", icon: <FaBell />, path: "/notice-period" },
     { name: "Task", icon: <FaTasks />, path: "/tasks" },
     { name: "Loan Application", icon: <FaFileInvoiceDollar />, path: "/loan-application" },

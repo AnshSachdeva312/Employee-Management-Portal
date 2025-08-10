@@ -38,7 +38,7 @@ const EmpAnnouncements = () => {
       const token = localStorage.getItem("token");
       if (!token) return setError("Unauthorized: No token found ❌");
 
-      const res = await axios.get("http://localhost:3000/api/announcements", {
+      const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/announcements`, {
         headers: { authorization: `Bearer ${token}` },
       });
 
@@ -63,12 +63,12 @@ const EmpAnnouncements = () => {
 
       if (editingAnnouncement) {
         await axios.put(
-          `http://localhost:3000/api/announcements/${editingAnnouncement._id}`,
+          `${import.meta.env.VITE_API_BASE_URL}/api/announcements/${editingAnnouncement._id}`,
           formData,
           { headers: { authorization: `Bearer ${token}` } }
         );
       } else {
-        await axios.post("http://localhost:3000/api/announcements", formData, {
+        await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/announcements`, formData, {
           headers: { authorization: `Bearer ${token}` },
         });
       }
@@ -95,7 +95,7 @@ const EmpAnnouncements = () => {
       const token = localStorage.getItem("token");
       if (!token) return setError("Unauthorized: No token found ❌");
 
-      await axios.delete(`http://localhost:3000/api/announcements/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/api/announcements/${id}`, {
         headers: { authorization: `Bearer ${token}` },
       });
 

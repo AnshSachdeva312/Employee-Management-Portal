@@ -37,7 +37,7 @@ const EmpTasks = () => {
       const token = localStorage.getItem("token");
       const endpoint = user.role === 1 ? "/api/tasks" : "/api/tasks/my-tasks";
       
-      const response = await axios.get(`http://localhost:3000${endpoint}`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}${endpoint}`, {
         headers: { authorization: `Bearer ${token}` }
       });
       
@@ -60,7 +60,7 @@ const EmpTasks = () => {
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get("http://localhost:3000/api/auth/all", {
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/auth/all`, {
         headers: { authorization: `Bearer ${token}` }
       });
       setUsers(response.data.filter(u => u._id !== user?._id));
@@ -72,7 +72,7 @@ const EmpTasks = () => {
   const createTask = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.post("http://localhost:3000/api/tasks", taskData, {
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/tasks`, taskData, {
         headers: { 
           authorization: `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -97,7 +97,7 @@ const EmpTasks = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:3000/api/tasks/${taskId}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/tasks/${taskId}`,
         { status: newStatus },
         { headers: { authorization: `Bearer ${token}` } }
       );
@@ -111,7 +111,7 @@ const EmpTasks = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:3000/api/tasks/${taskId}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/tasks/${taskId}`,
         { status: "Completed" },
         { headers: { authorization: `Bearer ${token}` } }
       );
@@ -125,7 +125,7 @@ const EmpTasks = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.delete(
-        `http://localhost:3000/api/tasks/${taskId}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/tasks/${taskId}`,
         { headers: { authorization: `Bearer ${token}` } }
       );
       fetchTasks();

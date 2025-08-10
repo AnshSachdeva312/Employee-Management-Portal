@@ -9,8 +9,8 @@ connectDB();
 const app=express();
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(cors({
-    origin:["http://localhost:5173"],
-    credentials:true
+    origin: true, // Allows all origins
+    credentials: true
 }))
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
@@ -30,6 +30,4 @@ const loanRouter = require('./Routes/loanRoutes');
 app.use('/api/loans', loanRouter);
 const noticePeriodRouter = require('./Routes/noticeperiodRoutes');
 app.use('/api/notice-periods', noticePeriodRouter);
-const attendanceRouter = require('./Routes/attendanceRoutes');
-app.use('/api/attendance', attendanceRouter);
 app.listen(3000);

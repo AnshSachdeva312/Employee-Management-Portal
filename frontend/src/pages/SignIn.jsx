@@ -18,7 +18,7 @@ export default function SignIn() {
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/api/auth/login", { email, password });
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/login`, { email, password });
       localStorage.setItem("user", JSON.stringify(response.data.user));
       localStorage.setItem("token", response.data.token);
       toast.success("Login Successful!");
